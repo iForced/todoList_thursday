@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import {todolistApi} from "../api/todolistApi";
+import {tasksApi} from "../api/tasksApi";
 
 export default {
     title: 'API'
 }
 
-export const GetTodolists = () => {
+export const GetTasks = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistApi()
-            .getTodos()
+        tasksApi()
+            .getTasks()
             .then((res) => {
                 setState(res.data);
             })
@@ -18,30 +18,30 @@ export const GetTodolists = () => {
 
     return <div> {JSON.stringify(state)}</div>
 }
-export const CreateTodolist = () => {
+export const CreateTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistApi()
-            .createTodo('What to do')
+        tasksApi()
+            .createTask('MongoDB')
             .then(res => setState(res.data))
     }, [])
 
     return <div> {JSON.stringify(state)}</div>
 }
-export const DeleteTodolist = () => {
+export const DeleteTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistApi()
-            .deleteTodo()
+        tasksApi()
+            .deleteTask()
             .then(res => setState(res.data))
     }, [])
 
     return <div> {JSON.stringify(state)}</div>
 }
-export const UpdateTodolistTitle = () => {
+export const UpdateTaskTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistApi()
+        tasksApi()
             .updateTaskTitle('React')
             .then(res => setState(res.data))
     }, [])
