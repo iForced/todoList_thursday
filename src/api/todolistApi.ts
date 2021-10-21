@@ -29,11 +29,11 @@ export const todolistApi = () => {
         createTodo(title: string) {
             return axiosInstance.post<ResponseType<{item: TodolistType}>>('/todo-lists', {title})
         },
-        deleteTodo() {
-            return axiosInstance.delete<ResponseType>(`/todo-lists/69ff5e1d-771b-4946-b7dc-cbf6f722b3d3`)
+        deleteTodo(todolistID: string) {
+            return axiosInstance.delete<ResponseType>(`/todo-lists/${todolistID}`)
         },
-        updateTaskTitle(title: string) {
-            return axiosInstance.put<ResponseType>(`/todo-lists/6a369f14-dbd4-49d2-8344-51f3be13ce40`, {title})
+        updateTodoTitle(todolistID: string, title: string) {
+            return axiosInstance.put<ResponseType>(`/todo-lists/${todolistID}`, {title})
         }
     }
 }
